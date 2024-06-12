@@ -37,6 +37,7 @@ use crate::{
 };
 use hbb_common::{
     anyhow::anyhow,
+    config,
     tokio::sync::{
         mpsc::{unbounded_channel, UnboundedReceiver, UnboundedSender},
         Mutex as TokioMutex,
@@ -411,7 +412,10 @@ fn run(vs: VideoService) -> ResultType<()> {
     video_qos.refresh(None);
     let mut spf;
     let mut quality = video_qos.quality();
-    let record_incoming = !Config::get_option("allow-auto-record-incoming").is_empty();
+    let record_incoming = config::option2bool(
+        "allow-auto-record-incoming",
+        &Config::get_option("allow-auto-record-incoming"),
+    );
     let client_record = video_qos.record();
     drop(video_qos);
     let (mut encoder, encoder_cfg, codec_format, use_i444, recorder) = match setup_encoder(
@@ -528,6 +532,7 @@ fn run(vs: VideoService) -> ResultType<()> {
         #[cfg(all(windows, feature = "vram"))]
         if c.is_gdi() && encoder.input_texture() {
             log::info!("changed to gdi when using vram");
+            VRamEncoder::set_fallback_gdi(display_idx, true);
             bail!("SWITCH");
         }
         check_privacy_mode_changed(&sp, c.privacy_mode_id)?;
@@ -568,6 +573,10 @@ fn run(vs: VideoService) -> ResultType<()> {
                 }
                 #[cfg(windows)]
                 {
+                    #[cfg(feature = "vram")]
+                    if try_gdi == 1 && !c.is_gdi() {
+                        VRamEncoder::set_fallback_gdi(display_idx, false);
+                    }
                     try_gdi = 0;
                 }
                 Ok(())

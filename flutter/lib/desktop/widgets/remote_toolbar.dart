@@ -665,7 +665,7 @@ class _MonitorMenu extends StatelessWidget {
         onChanged: (value) async {
           if (value == null) return;
           await bind.sessionSetDisplaysAsIndividualWindows(
-              sessionId: ffi.sessionId, value: value ? 'Y' : '');
+              sessionId: ffi.sessionId, value: value ? 'Y' : 'N');
         },
         ffi: ffi,
         child: Text(translate('Show displays as individual windows')));
@@ -2465,19 +2465,20 @@ class _DraggableShowHideState extends State<_DraggableShowHide> {
                 ),
               ),
             )),
-        if (!isMacOS) Obx(() => Offstage(
-              offstage: isFullscreen.isFalse,
-              child: TextButton(
-                onPressed: () => widget.setMinimize(),
-                child: Tooltip(
-                  message: translate('Minimize'),
-                  child: Icon(
-                    Icons.remove,
-                    size: iconSize,
+        if (!isMacOS)
+          Obx(() => Offstage(
+                offstage: isFullscreen.isFalse,
+                child: TextButton(
+                  onPressed: () => widget.setMinimize(),
+                  child: Tooltip(
+                    message: translate('Minimize'),
+                    child: Icon(
+                      Icons.remove,
+                      size: iconSize,
+                    ),
                   ),
                 ),
-              ),
-            )),
+              )),
         TextButton(
           onPressed: () => setState(() {
             widget.show.value = !widget.show.value;
