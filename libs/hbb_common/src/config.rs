@@ -1284,6 +1284,7 @@ impl PeerConfig {
             keys::OPTION_TOUCH_MODE,
             keys::OPTION_I444,
             keys::OPTION_SWAP_LEFT_RIGHT_MOUSE,
+            keys::OPTION_COLLAPSE_TOOLBAR,
         ]
         .map(|key| {
             mp.insert(key.to_owned(), UserDefaultConfig::read(key));
@@ -1550,40 +1551,6 @@ impl LanPeers {
             .modified()?
             .duration_since(SystemTime::UNIX_EPOCH)?
             .as_millis() as _)
-    }
-}
-
-#[derive(Debug, Default, Serialize, Deserialize, Clone)]
-pub struct HwCodecConfig {
-    #[serde(default, deserialize_with = "deserialize_string")]
-    pub ram: String,
-    #[serde(default, deserialize_with = "deserialize_string")]
-    pub vram: String,
-}
-
-impl HwCodecConfig {
-    pub fn load() -> HwCodecConfig {
-        Config::load_::<HwCodecConfig>("_hwcodec")
-    }
-
-    pub fn store(&self) {
-        Config::store_(self, "_hwcodec");
-    }
-
-    pub fn clear() {
-        HwCodecConfig::default().store();
-    }
-
-    pub fn clear_ram() {
-        let mut c = Self::load();
-        c.ram = Default::default();
-        c.store();
-    }
-
-    pub fn clear_vram() {
-        let mut c = Self::load();
-        c.vram = Default::default();
-        c.store();
     }
 }
 
@@ -2134,6 +2101,9 @@ pub mod keys {
     pub const OPTION_FLOATING_WINDOW_TRANSPARENCY: &str = "floating-window-transparency";
     pub const OPTION_FLOATING_WINDOW_SVG: &str = "floating-window-svg";
 
+    // android keep screen on
+    pub const OPTION_KEEP_SCREEN_ON: &str = "keep-screen-on";
+
     pub const OPTION_DISABLE_GROUP_PANEL: &str = "disable-group-panel";
     pub const OPTION_PRE_ELEVATE_SERVICE: &str = "pre-elevate-service";
 
@@ -2197,6 +2167,7 @@ pub mod keys {
         OPTION_FLOATING_WINDOW_UNTOUCHABLE,
         OPTION_FLOATING_WINDOW_TRANSPARENCY,
         OPTION_FLOATING_WINDOW_SVG,
+        OPTION_KEEP_SCREEN_ON,
         OPTION_DISABLE_GROUP_PANEL,
         OPTION_PRE_ELEVATE_SERVICE,
     ];
@@ -2236,6 +2207,18 @@ pub mod keys {
         OPTION_PRESET_ADDRESS_BOOK_NAME,
         OPTION_PRESET_ADDRESS_BOOK_TAG,
     ];
+}
+
+pub fn common_load<
+    T: serde::Serialize + serde::de::DeserializeOwned + Default + std::fmt::Debug,
+>(
+    suffix: &str,
+) -> T {
+    Config::load_::<T>(suffix)
+}
+
+pub fn common_store<T: serde::Serialize>(config: &T, suffix: &str) {
+    Config::store_(config, suffix);
 }
 
 #[cfg(test)]
