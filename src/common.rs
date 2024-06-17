@@ -1052,12 +1052,12 @@ pub fn get_api_server(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "https://rustdesk.htlss.cn".to_owned()
+    "http://47.120.33.73:21114".to_owned()
 }
 
 pub fn get_audit_server(api: String, custom: String, typ: String) -> String {
     let url = get_api_server(api, custom);
-    if url.is_empty() || url.contains("rustdesk.htlss.cn") {
+    if url.is_empty() || url.contains("47.120.33.73") {
         return "".to_owned();
     }
     format!("{}/api/audit/{}", url, typ)
