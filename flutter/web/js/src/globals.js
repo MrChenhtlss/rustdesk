@@ -776,7 +776,7 @@ function getApiServer() {
       return `http://${s}`;
     }
   }
-  return 'http://47.120.33.73:21114';
+  return 'https://rustdesk.htlss.cn';
 }
 
 function getAuditServer(typ) {
@@ -784,7 +784,7 @@ function getAuditServer(typ) {
     return '';
   }
   const api_server = getApiServer();
-  if (!api_server || api_server.includes('47.120.33.73')) {
+  if (!api_server || api_server.includes('rustdesk.htlss.cn')) {
     return '';
   }
   return api_server + '/api/audit/' + typ;

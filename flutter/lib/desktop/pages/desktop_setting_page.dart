@@ -1735,7 +1735,7 @@ class _AboutState extends State<_About> {
                       ).marginSymmetric(vertical: 4.0)),
                   InkWell(
                       onTap: () {
-                        launchUrlString('https://');
+                        launchUrlString('https://pan.htlss.cn');
                       },
                       child: Text(
                         translate('Website'),
@@ -1753,7 +1753,7 @@ class _AboutState extends State<_About> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '',
+                                'Email:chen1350962574@Gmail.com | 1350962574@QQ.com',
                                 style: const TextStyle(color: Colors.white),
                               ),
                               Text(
