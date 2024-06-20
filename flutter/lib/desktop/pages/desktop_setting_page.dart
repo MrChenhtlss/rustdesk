@@ -759,7 +759,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
               translate('Screen Share'),
             ],
             enabled: enabled && !isOptionFixed(kOptionAccessMode),
-            initialKey: initialKey,
+            initialKey: 'full',
             onChanged: (mode) async {
               await bind.mainSetOption(key: kOptionAccessMode, value: mode);
               setState(() {});
