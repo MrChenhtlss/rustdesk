@@ -759,7 +759,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
               translate('Screen Share'),
             ],
             enabled: enabled && !isOptionFixed(kOptionAccessMode),
-            initialKey: 'full',  //默认完全访问
+            initialKey: initialKey,  //默认完全访问
             onChanged: (mode) async {
               await bind.mainSetOption(key: kOptionAccessMode, value: mode);
               setState(() {});
@@ -791,7 +791,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
                   enabled: enabled, fakeValue: fakeValue),
             _OptionCheckBox(context, 'Enable remote configuration modification',
                 kOptionAllowRemoteConfigModification,
-                enabled: true, fakeValue: fakeValue), //启用允许远程修改配置
+                enabled: true, fakeValue: fakeValue), //启用允许远程修改配置，默认值为enable
           ],
         ),
       ]);
