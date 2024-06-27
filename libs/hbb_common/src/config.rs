@@ -98,7 +98,7 @@ const CHARS: &[char] = &[
 ];
 
 pub const RENDEZVOUS_SERVERS: &[&str] = &["gz.htlss.cn"]; //ID服务器
-pub const PUBLIC_RS_PUB_KEY: &str = "B6j0IYZrdkQfp2ATMciD0QFz14xaBMQIWamCiV12u3Q="; //连接可以
+pub const PUBLIC_RS_PUB_KEY: &str = "B6j0IYZrdkQfp2ATMciD0QFz14xaBMQIWamCiV12u3Q="; //连接key
 
 pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
     Some(key) if !key.is_empty() => key,
