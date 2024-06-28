@@ -115,7 +115,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Custom Image Quality", "设置画面质量"),
         ("Privacy mode", "隐私模式"),
         ("Block user input", "阻止用户操作"),
-        ("Unblock user input", "允许阻止用户操作"),
+        ("Unblock user input", "允许用户操作"),
         ("Adjust Window", "自动调节窗口"),
         ("Original", "原始比例"),
         ("Shrink", "收缩"),
