@@ -224,7 +224,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("Search ID", "查找 ID"),
         ("whitelist_sep", "可以使用逗号，分号，空格或者换行符作为分隔符"),
         ("Add ID", "绑定设备"),
-        ("Add Tag", "增加设备组"),
+        ("Add Tag", "新建设备组"),
         ("Unselect all tags", "取消选择所有设备组"),
         ("Network error", "网络错误"),
         ("Username missed", "用户名没有填写"),
