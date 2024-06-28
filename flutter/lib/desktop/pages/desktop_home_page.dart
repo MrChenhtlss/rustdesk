@@ -418,7 +418,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           "Status",
           "There is a newer version of ${bind.mainGetAppNameSync()} ${bind.mainGetNewVersion()} available.",
           "Click to download", () async {
-        final Uri url = Uri.parse('https://rustdesk.com/download'); //RustDesk更新URL
+        final Uri url = Uri.parse('https://rustdesk.htlss.cn/download'); //RustDesk更新URL
         await launchUrl(url);
       }, closeButton: true);
     }

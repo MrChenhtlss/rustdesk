@@ -111,7 +111,7 @@ class _ConnectionPageState extends State<ConnectionPage> {
         ? const SizedBox(height: 0)
         : InkWell(
             onTap: () async {
-              final url = 'https://rustdesk.com/download'; //RustDesk更新URL
+              final url = 'https://rustdesk.htlss.cn/download'; //RustDesk更新URL
               if (await canLaunchUrl(Uri.parse(url))) {
                 await launchUrl(Uri.parse(url));
               }
