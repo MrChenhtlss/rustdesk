@@ -42,7 +42,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("starts with a letter", "以字母开头"),
         ("allowed characters", "使用允许的字符"),
         ("id_change_tip", "只可以使用字母 a-z, A-Z, 0-9, - (dash), _ (下划线)。首字母必须是 a-z, A-Z。长度在 6 与 16 之间。"),
-        ("Website", "RustDesk云端控制台"),
+        ("Website", "在线文件存储系统"),
         ("About", "关于"),
         ("Slogan_tip", "源于 RustDesk 开源项目，向其项目组及所有贡献者致以谢意。"),
         ("Privacy Statement", "RustDesk开源项目"),
