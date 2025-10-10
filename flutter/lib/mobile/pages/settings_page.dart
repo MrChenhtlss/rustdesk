@@ -859,12 +859,7 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
                     child: Text(_fingerprint),
                   ),
                   leading: Icon(Icons.fingerprint)),
-            SettingsTile(
-              title: Text(translate("Privacy Statement")),
-              onPressed: (context) =>
-                  launchUrlString('https://rustdesk.com'),
-              leading: Icon(Icons.privacy_tip),
-            )
+            // Privacy Statement settings tile removed per request
           ],
         ),
       ],
