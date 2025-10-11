@@ -13,7 +13,6 @@ on:
 
 jobs:
   run-flutter-tag-build:
-    runs-on: [self-hosted]
     uses: ./.github/workflows/flutter-build.yml
     secrets: inherit
     with:
