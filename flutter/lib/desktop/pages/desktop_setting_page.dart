@@ -467,7 +467,7 @@ class _GeneralState extends State<_General> {
                 serviceBtnEnabled.value = true;
               });
             }();
-          }, enabled: serviceBtnEnabled.value))
+          }, enabled: false)) // 禁用 Stop-Service Button
     ]);
   }
 
